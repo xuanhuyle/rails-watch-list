@@ -1,16 +1,14 @@
 <h1>Add a new bookmark to <%= @list.name %></h1>
 
-<%= form_with(model: [@list, @bookmark], local: true) do |form| %>
+<%= simple_form_for [@list, @bookmark], html: { local: true } do |form| %>
   <div>
-    <%= form.label :movie_id, "Select Movie" %>
-    <%= form.collection_select :movie_id, @movies, :id, :title %>
+    <%= form.input :movie_id, collection: @movies, label: "Select Movie", as: :select, include_blank: false %>
   </div>
   <div>
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.input :comment %>
   </div>
   <div>
-    <%= form.submit 'Add Bookmark' %>
+    <%= form.button :submit, 'Add Bookmark' %>
   </div>
 <% end %>
 
