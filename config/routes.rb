@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
+  resources :bookmarks, only: [:destroy]
+  resources :lists do
+    resources :bookmarks, only: [:create, :new]
+  end
+
+  root to: 'lists#index'
+
   # get 'bookmarks/create'
   # get 'bookmarks/destroy'
   # get 'lists/index'
@@ -13,14 +21,6 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-  resources :bookmarks, only: [:destroy]
-  resources :lists do
-    resources :bookmarks, only: [:create, :new]
-  end
-
-  root to: 'lists#index'
-
   # Defines the root path route ("/")
   # root "lists#index"
 end
