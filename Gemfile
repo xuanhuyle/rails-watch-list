@@ -71,4 +71,3 @@ gem "simple_form"
 gem "sassc-rails"
 gem 'dotenv-rails'
 gem "cloudinary"
-gem 'activestorage-cloudinary-service'

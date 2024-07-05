@@ -2,15 +2,16 @@
 
 <%= link_to 'New List', new_list_path %>
 
-<ul>
+<div class="cards">
   <% @lists.each do |list| %>
-    <li>
       <%= link_to list_path(list) do %>
-        <% if list.image.attached? %>
-          <%= image_tag list.image.variant(resize_to_limit: [100, 100]) %>
-        <% end %>
-        <%= list.name %>
+          <% if list.photo.attached? %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/200/300')">
+          <% end %>
+            <%= list.name %>
+          </div>
       <% end %>
-    </li>
   <% end %>
-</ul>
+</div>
