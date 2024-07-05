@@ -1,12 +1,14 @@
 <h1>New List</h1>
 
-<%= form_with(model: @list, local: true) do |form| %>
+<%= simple_form_for @list do |form| %>
   <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.input :name %>
   </div>
   <div>
-    <%= form.submit 'Create List' %>
+    <%= form.input :image, as: :file %>
+  </div>
+  <div>
+    <%= form.button :submit, 'Create List' %>
   </div>
 <% end %>
 

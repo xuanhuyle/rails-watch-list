@@ -1,5 +1,9 @@
 <h1><%= @list.name %></h1>
 
+<% if @list.image.attached? %>
+  <%= image_tag @list.image.variant(resize_to_limit: [500, 500]) %>
+<% end %>
+
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li>
